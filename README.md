@@ -9,6 +9,15 @@ A Roku channel (SudoMovies) for sideloading onto a Roku developer device.
 
 ---
 
+## 📖 About
+
+**SudoMovies** is a lightweight Roku channel that lets you browse and play movies and TV shows using free, open‑source resolvers.  
+- **Febbox** – a free service that provides video streams. The free tier gives **10 GB of data per month**; therefore you should only select videos whose total size is under 10 GB to avoid interruptions.  
+- **TMDB** – a read‑only API key (also free) is used for movie metadata and search.  
+- The channel is packaged for sideloading onto a Roku developer device; no proprietary or paid services are required.
+
+---
+
 ## ✨ Features (tagged)
 
 | Tag | What it does |
@@ -25,15 +34,15 @@ A Roku channel (SudoMovies) for sideloading onto a Roku developer device.
 ## 📦 Deploy (GUI)
 
 1. Run the tool:
-
    ```powershell
    python tools/roku_inject_deploy.py
    # or double‑click RokuDeploy.exe
    ```
 
-2. **Febbox token** – paste your token (get at [febbox.com](https://febbox.com) with a fresh Google account).
+2. **Febbox token** – paste your token (get at [febbox.com](https://febbox.com) with a fresh Google account).  
+   *Remember the free tier gives 10 GB per month – pick videos whose total size is under 10 GB.*
 
-3. **TMDB read‑only key** – optional; get it from [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) and paste it into the new **TMDB Key** field. Click **Replace TMDB Key in Config.brs**.
+3. **TMDB read‑only key** – optional; get it from [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) and paste it into the **TMDB Key** field. Click **Replace TMDB Key in Config.brs**.
 
 4. Click **Auto‑Find Roku** or type the device IP, set credentials (`rokudev` / `1234`).
 
@@ -74,6 +83,7 @@ Or from the GUI: click **Build Package**.
 - Reinstalling replaces the existing dev channel (Delete then Install).
 - Personal data from the original dev build has been removed; this copy is safe to share.
 - The executable `RokuDeploy.exe` is a standalone PyInstaller build (no Python needed).
+- **Febbox free tier:** 10 GB monthly allowance – choose videos accordingly.
 
 ---
 
@@ -131,3 +141,7 @@ SudoMovies/
 - **GitHub:** [https://github.com/briggsosdev/SudoMovies](https://github.com/briggsosdev/SudoMovies)
 - **TMDB key:** <https://www.themoviedb.org/settings/api>
 - **Febbox token:** <https://febbox.com>
+
+---
+
+*Happy streaming, and remember: keep each video under 10 GB to stay within the free Febbox allowance!*
