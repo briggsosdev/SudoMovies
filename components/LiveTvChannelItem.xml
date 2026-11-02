@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="LiveTvChannelItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" />
+    <field id="content" type="node" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" />
+  </interface>
+  <children>
+    <Rectangle id="itemBg" color="0x0B0E17FF" width="420" height="150" translation="[0,0]" />
+    <Rectangle id="focusShadow" color="0xD4202866" width="436" height="166"
+      translation="[-8,-8]" visible="false" />
+    <Rectangle id="focusRect" color="0xD42028FF" width="428" height="158"
+      translation="[-4,-4]" visible="false" />
+    <Rectangle id="innerBg" color="0x0B0E17FF" width="420" height="150" translation="[0,0]" />
+    <Rectangle id="itemEdge" color="0xD42028FF" width="8" height="150" translation="[0,0]" visible="false" />
+    <Rectangle id="logoPlate" color="0x05070DFF" width="208" height="138" translation="[8,6]" />
+    <Poster id="logo" translation="[12,10]" width="200" height="130"
+      loadDisplayMode="scaleToFit" failedBitmapUri="pkg:/images/poster_placeholder.png" />
+    <Label id="numLabel" translation="[224,14]" width="184" height="26"
+      maxLines="1" font="font:SmallSystemFont" color="0xFF6B6BFF" />
+    <Label id="titleLabel" translation="[224,42]" width="184" height="68"
+      maxLines="2" wrap="true" vertAlign="top" font="font:MediumBoldSystemFont" color="0xFFFFFFFF" />
+    <Rectangle id="nowDot" color="0xD42028FF" width="10" height="10" translation="[224,118]" />
+    <Label id="subLabel" translation="[240,112]" width="168" height="26"
+      maxLines="1" font="font:SmallSystemFont" color="0xE5E7EBFF" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/LiveTvChannelItem.brs" />
+</component>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SeriesDetailScene" extends="Group">
+  <interface>
+    <field id="series" type="assocarray" />
+    <field id="done" type="bool" value="false" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" width="1920" height="1080" />
+    <Poster id="backdrop" width="1920" height="1080" translation="[0,0]" loadDisplayMode="scaleToFill" />
+    <Rectangle id="overlay" color="0x05070DB3" width="1920" height="1080" translation="[0,0]" />
+    <Rectangle id="leftShade" color="0x05070DE6" width="1200" height="1080" translation="[0,0]" />
+    <Rectangle id="bottomShadeA" color="0x05070D66" width="1920" height="140" translation="[0,700]" />
+    <Rectangle id="bottomShadeB" color="0x05070DB3" width="1920" height="120" translation="[0,840]" />
+    <Rectangle id="bottomShadeC" color="0x05070DFF" width="1920" height="120" translation="[0,960]" />
+    <Rectangle id="topRule" color="0xD42028FF" width="1920" height="5" translation="[0,0]" />
+    <Rectangle id="seriesKickerBg" color="0xD42028FF" width="220" height="34" translation="[100,72]" />
+    <Label id="seriesKicker" font="font:SmallSystemFont" color="0xFFFFFFFF"
+      translation="[100,72]" width="220" height="34" horizAlign="center" vertAlign="center" text="TV SERIES" />
+    <Label id="titleShadow" font="font:LargeBoldSystemFont" color="0x000000CC"
+      translation="[102,114]" width="1300" height="130" wrap="true" maxLines="2" vertAlign="top" />
+    <Label id="title" font="font:LargeBoldSystemFont" color="0xFFFFFFFF"
+      translation="[100,112]" width="1300" height="130" wrap="true" maxLines="2" vertAlign="top" />
+    <Rectangle id="titleRule" color="0xD42028FF" width="220" height="6" translation="[100,252]" />
+    <Rectangle id="metaPill" color="0x0B0E17E6" width="760" height="46" translation="[100,266]" />
+    <Rectangle id="metaPillEdge" color="0xD42028FF" width="6" height="46" translation="[100,266]" />
+    <Label id="meta" font="font:MediumBoldSystemFont" color="0xFFD75EFF"
+      translation="[118,266]" width="724" height="46" vertAlign="center" />
+    <Label id="overview" font="font:MediumSystemFont" color="0xE5E7EBFF"
+      translation="[100,322]" width="1100" height="180" wrap="true" maxLines="4" vertAlign="top" />
+    <Rectangle id="accentRule" color="0xD42028FF" width="220" height="6" translation="[100,522]" />
+    <Label id="seasonsLabel" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+      translation="[100,530]" width="700" height="36" text="SEASONS" />
+    <Rectangle id="seasonsPanel" color="0x0B0E17CC" width="560" height="440" translation="[80,572]" />
+    <Rectangle id="seasonsPanelEdge" color="0xD42028FF" width="6" height="440" translation="[80,572]" />
+    <LabelList id="seasonsList" translation="[100,578]" itemSize="[520,56]" numRows="7"
+      focusBitmapUri="pkg:/images/btn_focus.png"
+      focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+      color="0xE5E7EBFF" focusedColor="0xFFFFFFFF" />
+    <Rectangle id="hintBar" color="0x0B0E17FF" width="1920" height="64" translation="[0,1016]" />
+    <Rectangle id="hintTick" color="0xD42028FF" width="6" height="40" translation="[48,1026]" />
+    <Label id="backHint" font="font:MediumSystemFont" color="0xE5E7EBFF"
+      translation="[64,1026]" width="1720" height="40" vertAlign="center" text="* adds watchlist  •  OK opens season  •  BACK returns home" />
+    <Timer id="toastTimer" duration="2" repeat="false" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Config.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Persist.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Profiles.brs" />
+  <script type="text/brightscript" uri="pkg:/components/SeriesDetailScene.brs" />
+</component>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- TrailerScene: full-screen player for ONE YouTube video id.
+     Opened by the Trailer helper (HomeScene scope), which sets videoId then
+     observes "done" (BACK or playback finished). Teardown is the scene's
+     own: it sets done = true and the parent removes the node, exactly the
+     contract GenreScene uses. -->
+<component name="TrailerScene" extends="Group">
+  <interface>
+    <field id="videoId" type="string" />
+    <field id="titleText" type="string" />
+    <field id="done" type="bool" value="false" />
+  </interface>
+  <children>
+    <Rectangle id="trailerBg" color="0x05070DFF" width="1920" height="1080" translation="[0,0]" />
+    <Rectangle id="trailerRule" color="0xD42028FF" width="1920" height="5" translation="[0,0]" />
+
+    <!-- XML-DECLARED Video, never CreateObject'd: see the LiveTvScene v7
+         note (components/LiveTvScene.xml) - a runtime-created Video node
+         reaches state=playing but renders black on this firmware. Declared
+         before the chrome below so the caption/hint bar composite on top
+         of the video plane; enable flags match the proven fullscreen
+         config so BACK is delivered to this component's onKeyEvent. -->
+    <Video id="trailerVideo" translation="[0,0]" width="1920" height="1080"
+      enableTrickPlay="false" enableUI="false" />
+
+    <Rectangle id="trailerCaptionBg" color="0x0B0E17CC" width="1920" height="88"
+      translation="[0,0]" visible="false" />
+    <Label id="trailerCaption" color="0xFFFFFFFF" font="font:MediumBoldSystemFont"
+      translation="[64,0]" width="1400" height="88" vertAlign="center" maxLines="1"
+      visible="false" />
+    <Label id="trailerMessage" color="0xE5E7EBFF" font="font:MediumBoldSystemFont"
+      translation="[240,470]" width="1440" height="140" horizAlign="center" vertAlign="center"
+      wrap="true" maxLines="3" />
+    <Rectangle id="trailerHintBar" color="0x0B0E17FF" width="1920" height="64" translation="[0,1016]" />
+    <Rectangle id="trailerHintTick" color="0xD42028FF" width="6" height="40" translation="[48,1026]" />
+    <Label id="trailerHint" color="0xE5E7EBFF" font="font:MediumSystemFont"
+      translation="[64,1026]" width="1720" height="40" vertAlign="center"
+      text="BACK returns  •  trailer streams from YouTube" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/TrailerScene.brs" />
+</component>

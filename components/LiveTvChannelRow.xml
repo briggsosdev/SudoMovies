@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- One row of the Live TV channel guide.
+     Three lines instead of the old single LabelList string:
+       CH 104   BBC News
+                NOW    7:00 PM   News at Seven
+                NEXT   8:00 PM   World Report
+     The NOW/NEXT titles are written by LiveTvScene into the ContentNode's
+     shortDescriptionLine2 / description fields. -->
+<component name="LiveTvChannelRow" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" />
+    <field id="content" type="node" />
+    <field id="width" type="float" value="700" />
+    <field id="height" type="float" value="86" />
+    <field id="focusPercent" type="float" />
+  </interface>
+  <children>
+    <Rectangle id="rowBg" color="0x0D1320FF" width="700" height="82" />
+    <Rectangle id="rowEdge" color="0xD42028FF" width="6" height="82" visible="false" />
+    <Rectangle id="chPlate" color="0x1F2937FF" translation="[14,9]" width="58" height="30" />
+    <Label id="chLabel" text="" font="font:SmallBoldSystemFont" color="0xFFFFFFFF"
+      translation="[14,9]" width="58" height="30" horizAlign="center" vertAlign="center" />
+    <Label id="nameLabel" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+      translation="[84,4]" width="600" height="34" maxLines="1" vertAlign="center" />
+    <Label id="nowLabel" font="font:SmallSystemFont" color="0xE5E7EBFF"
+      translation="[84,38]" width="600" height="22" maxLines="1" vertAlign="center" />
+    <Label id="nextLabel" font="font:SmallSystemFont" color="0x8A93A5FF"
+      translation="[84,58]" width="600" height="22" maxLines="1" vertAlign="center" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/LiveTvChannelRow.brs" />
+</component>

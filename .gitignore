@@ -1,0 +1,18 @@
+# Ignore Node.js module cache
+node_modules/
+
+# Ignore build outputs
+out/
+*.zip
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore temp files
+*.tmp

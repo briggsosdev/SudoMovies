@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="LiveTvTask" extends="Task">
+  <interface>
+    <field id="mode" type="string" value="all" />
+    <field id="source" type="string" value="free" />
+    <field id="forceRefresh" type="boolean" value="false" />
+    <field id="channelsUrl" type="string" />
+    <field id="epgUrl" type="string" />
+    <field id="maxChannels" type="integer" value="0" />
+    <field id="nowSec" type="integer" value="0" />
+    <field id="channels" type="array" />
+    <field id="epg" type="assocarray" />
+    <field id="fromCache" type="boolean" value="false" />
+    <field id="status" type="integer" value="0" alwaysNotify="true" />
+    <field id="errorDetail" type="string" />
+    <field id="resolveId" type="string" />
+    <field id="resolvedUrl" type="string" />
+    <field id="resolveStatus" type="integer" value="0" alwaysNotify="true" />
+    <field id="resolveError" type="string" />
+    <field id="tmdbKey" type="string" />
+    <field id="sudoMovies" type="array" />
+    <field id="sudoAnchor" type="integer" value="0" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/CineVid.brs" />
+  <script type="text/brightscript" uri="pkg:/components/LiveTv.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tasks/LiveTvTask.brs" />
+</component>

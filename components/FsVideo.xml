@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- FsVideo: RETIRED fullscreen-player experiment (v5, 2026-09-23).
+      A runtime-created Video SUBCLASS never produced a picture on the
+      Hisense firmware — the only video pattern in this app with no working
+      precedent (XML-declared Videos and bare runtime Videos under a Group
+      both render). LiveTvScene now creates a bare Video parented to its own
+      group (v6, mirroring PlaybackScene.StartVideo). Kept in the package
+      unused so old references fail soft, not hard. -->
+<component name="FsVideo" extends="Video">
+  <interface>
+    <field id="channelTitle" type="string" value="" />
+  </interface>
+</component>

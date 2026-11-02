@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="KeyGridItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" />
+    <field id="content" type="node" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" />
+  </interface>
+  <children>
+    <Rectangle id="keyGlow" color="0xD4202844" width="128" height="108" translation="[-4,-4]" visible="false" />
+    <Rectangle id="keyRect" color="0x232838FF" width="120" height="100" />
+    <Rectangle id="keyEdge" color="0x3A4152FF" width="120" height="4" translation="[0,0]" />
+    <Rectangle id="keyFocusEdge" color="0xFFFFFFFF" width="120" height="6" translation="[0,0]" visible="false" />
+    <Label id="keyLabel" color="0xF5F5F5FF" width="120" height="100"
+      translation="[0,0]" horizAlign="center" vertAlign="center"
+      font="font:MediumBoldSystemFont" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/KeyGridItem.brs" />
+</component>

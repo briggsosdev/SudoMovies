@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="EpisodeScene" extends="Group">
+  <interface>
+    <field id="series" type="assocarray" />
+    <field id="seasonNum" type="integer" value="-1" />
+    <field id="done" type="bool" value="false" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" width="1920" height="1080" />
+    <Rectangle id="topShade" color="0x0B0E17FF" width="1920" height="200" translation="[0,0]" />
+    <Rectangle id="topShadeGlow" color="0xD4202830" width="1920" height="200" translation="[0,0]" />
+    <Rectangle id="topRule" color="0xD42028FF" width="1920" height="5" translation="[0,0]" />
+    <Rectangle id="epKickerBg" color="0xD42028FF" width="220" height="34" translation="[100,40]" />
+    <Label id="epKicker" font="font:SmallSystemFont" color="0xFFFFFFFF"
+      translation="[100,40]" width="220" height="34" horizAlign="center" vertAlign="center" text="TV SERIES" />
+    <Label id="title" font="font:LargeBoldSystemFont" color="0xFFFFFFFF"
+      translation="[100,80]" width="1720" height="72" wrap="true" maxLines="1" />
+    <Label id="subLabel" font="font:MediumBoldSystemFont" color="0xFFD75EFF"
+      translation="[100,162]" width="700" height="34" text="EPISODES" />
+    <Rectangle id="subRule" color="0xD42028FF" width="220" height="5" translation="[100,200]" />
+    <Rectangle id="epPanel" color="0x0B0E17CC" width="1680" height="760" translation="[80,212]" />
+    <Rectangle id="epPanelEdge" color="0xD42028FF" width="6" height="760" translation="[80,212]" />
+    <LabelList id="episodesList" translation="[100,224]" itemSize="[1640,74]" numRows="10"
+      focusBitmapUri="pkg:/images/btn_focus.png"
+      focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+      color="0xE5E7EBFF" focusedColor="0xFFFFFFFF" />
+    <Rectangle id="hintBar" color="0x0B0E17FF" width="1920" height="64" translation="[0,1016]" />
+    <Rectangle id="hintTick" color="0xD42028FF" width="6" height="40" translation="[48,1026]" />
+    <Label id="backHint" font="font:MediumSystemFont" color="0xE5E7EBFF"
+      translation="[64,1026]" width="1720" height="40" vertAlign="center" text="OK plays episode  •  BACK returns to seasons" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Config.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Persist.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Profiles.brs" />
+  <script type="text/brightscript" uri="pkg:/components/EpisodeScene.brs" />
+</component>

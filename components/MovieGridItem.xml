@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MovieGridItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" />
+    <field id="content" type="node" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" />
+  </interface>
+  <children>
+    <Rectangle id="focusGlow" color="0xFFFFFF2E" width="248" height="352"
+      translation="[-12,-12]" visible="false" />
+    <Rectangle id="focusShadow" color="0x000000AA" width="240" height="344"
+      translation="[-8,-8]" visible="false" />
+    <Rectangle id="focusRect" color="0xFFFFFFFF" width="232" height="336"
+      translation="[-4,-4]" visible="false" />
+    <Rectangle id="focusInner" color="0xFFFFFFFF" width="228" height="332"
+      translation="[-2,-2]" visible="false" />
+    <Poster id="poster" translation="[0,0]" width="224" height="328"
+      loadWidth="672" loadHeight="984" loadDisplayMode="scaleToFit"
+      failedBitmapUri="pkg:/images/poster_placeholder.png" />
+    <Rectangle id="titleScrim" color="0x000000D9" width="224" height="64"
+      translation="[0,328]" visible="true" />
+    <Rectangle id="playScrim" color="0x00000066" width="224" height="328"
+      translation="[0,0]" visible="false" />
+    <Rectangle id="playBadge" color="0xD42028FF" width="150" height="38"
+      translation="[12,288]" visible="false" />
+    <Label id="playHint" text="PLAY" color="0xFFFFFFFF"
+      font="font:MediumBoldSystemFont" translation="[18,288]" width="138" height="38"
+      vertAlign="center" visible="false" />
+    <Label id="rankShadow" color="0x000000CC" translation="[6,200]" width="110" height="140"
+      maxLines="1" font="font:LargeBoldSystemFont" visible="false" />
+    <Label id="rankLabel" color="0xFFFFFFFF" translation="[2,196]" width="110" height="140"
+      maxLines="1" font="font:LargeBoldSystemFont" visible="false" />
+    <Rectangle id="ratingBadge" color="0x000000B3" width="72" height="32"
+      translation="[144,8]" visible="false" />
+    <Label id="ratingLabel" color="0xFFD75EFF" translation="[144,8]" width="72" height="32"
+      maxLines="1" font="font:SmallSystemFont" horizAlign="center" vertAlign="center" visible="false" />
+    <Rectangle id="progressTrack" color="0x000000B3" width="224" height="10"
+      translation="[0,318]" visible="false" />
+    <Rectangle id="progressFill" color="0xD42028FF" width="0" height="10"
+      translation="[0,318]" visible="false" />
+    <Label id="titleLabel" translation="[4,332]" width="216" height="28"
+      maxLines="1" font="font:MediumBoldSystemFont" color="0xF5F5F5FF" />
+    <Label id="yearLabel" translation="[4,362]" width="216" height="20"
+      maxLines="1" font="font:SmallSystemFont" color="0x9CA3AFFF" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/MovieGridItem.brs" />
+</component>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- One text-only chip/button used by the genre browser's tab strip (genres)
+     and its page bar (PREV / PAGE x of y / NEXT). Text-only by design:
+     paging must never depend on artwork. -->
+<component name="GenrePageItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" />
+    <field id="content" type="node" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" />
+    <field id="itemHasFocus" type="boolean" />
+    <field id="rowListHasFocus" type="boolean" />
+    <field id="rowHasFocus" type="boolean" />
+  </interface>
+  <children>
+    <Rectangle id="plate" color="0x1B2233FF" width="180" height="44" translation="[0,0]" />
+    <Label id="label" color="0xB0B8C8FF" width="168" height="44" translation="[6,0]"
+      font="font:SmallBoldSystemFont" horizAlign="center" vertAlign="center" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/GenrePageItem.brs" />
+</component>

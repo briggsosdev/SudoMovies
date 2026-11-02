@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="PlaybackScene" extends="Group">
+  <interface>
+    <field id="movie" type="assocarray" />
+    <field id="resumeRec" type="assocarray" />
+    <field id="done" type="bool" value="false" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" translation="[0,0]" width="1920" height="1080" />
+    <Group id="errorGroup" visible="false">
+      <Rectangle id="errorDim" color="0x000000F2" width="1920" height="1080" translation="[0,0]" />
+      <Rectangle id="errorGlow" color="0xD4202844" width="780" height="350"
+        translation="[570,380]" />
+      <Rectangle id="errorPanel" color="0x0B0E17FF" width="760" height="330"
+        translation="[580,390]" />
+      <Rectangle id="errorEdge" color="0x1F2937FF" width="760" height="2"
+        translation="[580,718]" />
+      <Rectangle id="errorAccent" color="0xD42028FF" width="760" height="6"
+        translation="[580,384]" />
+      <Rectangle id="errorLeftBar" color="0xD42028FF" width="8" height="330"
+        translation="[580,390]" />
+      <Label id="errorTitle"
+        text="PLAYBACK FAILED"
+        color="0xFFFFFFFF"
+        font="font:MediumBoldSystemFont"
+        translation="[600,410]" horizAlign="center" width="720" height="40" />
+      <Label id="errorLabel"
+        text="Sorry, this stream could not be played."
+        visible="false" color="0xE5E7EBFF"
+        font="font:MediumSystemFont"
+        translation="[600,470]" horizAlign="center" width="720" height="64"
+        wrap="true" maxLines="2" />
+      <LabelList id="errorList"
+        translation="[640,560]"
+        itemSize="[640,56]"
+        numRows="2"
+        focusBitmapUri="pkg:/images/btn_focus.png"
+        focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+        color="0x9CA3AFFF"
+        focusedColor="0xFFFFFFFF" />
+      <Label id="errorHint"
+        text="OK retries  •  BACK goes back"
+        color="0xE5E7EBFF"
+        font="font:MediumSystemFont"
+        translation="[600,676]" horizAlign="center" width="720" height="40" />
+    </Group>
+    <Group id="resolveGroup" visible="false">
+      <Rectangle id="resolveDim" color="0x000000E6" width="1920" height="1080" translation="[0,0]" />
+      <Rectangle id="resolveGlow" color="0xD4202844" width="860" height="320"
+        translation="[530,380]" />
+      <Rectangle id="resolveCard" color="0x0B0E17FF" width="840" height="300"
+        translation="[540,390]" />
+      <Rectangle id="resolveCardAccent" color="0xD42028FF" width="840" height="6"
+        translation="[540,384]" />
+      <Rectangle id="resolveLeftBar" color="0xD42028FF" width="8" height="300"
+        translation="[540,390]" />
+      <Label id="resolveLabel" color="0xFFFFFFFF" font="font:MediumBoldSystemFont"
+        translation="[600,460]" width="720" height="44" horizAlign="center" wrap="true" maxLines="2" />
+      <Rectangle id="resolveAccent" color="0xD42028FF" width="200" height="6"
+        translation="[860,576]" />
+      <Label id="resolveHint"
+        text="BACK cancels this fetch"
+        color="0xE5E7EBFF"
+        font="font:MediumSystemFont"
+        translation="[600,630]" horizAlign="center" width="720" height="40" />
+    </Group>
+    <Group id="pickerGroup" visible="false">
+      <Rectangle id="pickerDim" color="0x000000E6" width="1920" height="1080" translation="[0,0]" />
+      <Label id="pickerTitle" text="CHOOSE A SOURCE" color="0xFFFFFFFF"
+        font="font:MediumBoldSystemFont" translation="[460,196]" width="1000" height="50"
+        horizAlign="center" vertAlign="center" />
+      <Rectangle id="pickerAccent" color="0xD42028FF" width="200" height="6"
+        translation="[860,248]" />
+      <Label id="pickerHint" text="FEM = Febbox  •  VIX = VixSrc  •  S = subtitles."
+        color="0xE5E7EBFF" font="font:MediumSystemFont" translation="[460,246]"
+        width="1000" height="40" horizAlign="center" />
+      <Rectangle id="pickerGlow" color="0xD4202844" width="940" height="508"
+        translation="[490,286]" />
+      <Rectangle id="pickerPanel" color="0x0B0E17FF" width="920" height="488"
+        translation="[500,296]" />
+      <Rectangle id="pickerEdge" color="0x1F2937FF" width="920" height="2"
+        translation="[500,294]" />
+      <Rectangle id="pickerLeftBar" color="0xD42028FF" width="8" height="488"
+        translation="[500,296]" />
+      <LabelList id="pickerList"
+        translation="[540,332]"
+        itemSize="[840,52]"
+        numRows="8"
+        focusBitmapUri="pkg:/images/btn_focus.png"
+        focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+        showFocusFootprint="true"
+        color="0x9CA3AFFF"
+        focusedColor="0xFFFFFFFF" />
+    </Group>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Config.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Persist.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Fembox.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Profiles.brs" />
+  <script type="text/brightscript" uri="pkg:/components/PlaybackScene.brs" />
+</component>

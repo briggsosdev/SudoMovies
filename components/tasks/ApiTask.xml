@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ApiTask" extends="Task">
+  <interface>
+    <field id="url" type="string" />
+    <field id="headers" type="assocarray" />
+    <field id="raw" type="string" alwaysNotify="true" />
+    <field id="status" type="integer" value="0" alwaysNotify="true" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tasks/ApiTask.brs" />
+</component>
+
+
+

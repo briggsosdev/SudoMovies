@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="HomeScene" extends="Scene">
+  <interface>
+    <field id="launchArgs" type="assocarray" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" width="1920" height="1080" />
+
+    <!-- SLIM HEADER: logo + name, hairline accent. -->
+    <Rectangle id="topBar" color="0x0B0E17FF" translation="[0,0]" width="1920" height="88" />
+    <Poster id="logoPoster" translation="[48,20]"
+      width="120" height="48" loadDisplayMode="scaleToFit" uri="pkg:/images/logo.png" />
+    <Label id="headerLabel" text="SUDOMOVIES" color="0xD42028FF"
+      font="font:MediumBoldSystemFont" translation="[180,22]" width="400" height="44"
+      vertAlign="center" />
+    <Rectangle id="topAccent" color="0xD42028FF" translation="[0,84]" width="1920" height="4" />
+
+<!-- FEATURE BAND (88..306 abs): slim gradient spotlight — deep band +
+     red hairlines, ~200px portrait thumb of the featured title,
+     kicker/title/meta/overview type stack, compact PLAY pill + rotation
+     page indicator at right. 218px tall so rows (y=318) keep the screen. -->
+    <Group id="heroGroup" translation="[0,88]">
+      <Rectangle id="heroBandBg" color="0x0B0E17FF" translation="[0,0]" width="1920" height="218" />
+      <Rectangle id="heroBandGlow" color="0xD4202818" translation="[0,0]" width="1920" height="218" />
+      <Rectangle id="heroBandBar" color="0xD42028FF" translation="[0,0]" width="6" height="218" />
+      <Poster id="heroBackdrop" translation="[96,14]" width="132" height="198"
+        loadWidth="342" loadDisplayMode="scaleToFit" />
+      <Rectangle id="heroThumbEdge" color="0xD42028FF" translation="[96,14]" width="132" height="4" />
+      <Label id="heroKicker" text="" color="0xD42028FF"
+        font="font:MediumBoldSystemFont" translation="[252,16]" width="1080" height="24"
+        maxLines="1" vertAlign="center" />
+      <Label id="heroTitle" text="" color="0xFFFFFFFF"
+        font="font:LargeBoldSystemFont" translation="[252,44]" width="1080" height="88"
+        maxLines="2" wrap="true" vertAlign="top" />
+      <Label id="heroMeta" text="" color="0xFFD75EFF"
+        font="font:MediumBoldSystemFont" translation="[252,136]" width="1080" height="26"
+        maxLines="1" vertAlign="center" />
+      <Label id="heroOverview" text="" color="0x9CA3AFFF"
+        font="font:SmallSystemFont" translation="[252,166]" width="1080" height="48"
+        maxLines="2" wrap="true" vertAlign="top" />
+      <Rectangle id="heroPlayBg" color="0xFFFFFFFF" translation="[1560,158]" width="200" height="48" />
+      <Label id="heroPlayLabel" text="PLAY" color="0x0B0E17FF"
+        font="font:MediumBoldSystemFont" translation="[1560,158]" width="200" height="48"
+        horizAlign="center" vertAlign="center" />
+      <Label id="heroPageLabel" text="" color="0x9CA3AFFF"
+        font="font:SmallSystemFont" translation="[1560,126]" width="200" height="28"
+        horizAlign="right" vertAlign="center" />
+      <Rectangle id="heroBandRule" color="0xD42028FF" translation="[0,218]" width="1920" height="4" />
+    </Group>
+
+<!-- ROWS (318..1016): shifted right for the wider left rail. RowList
+     semantics (proven against Roku docs): itemSize is the FULL ROW size
+     [rowWidth,rowHeight] — 1696 = 1920-224 translation; rowItemSize is the
+     per-tile size [224,336] (~7 posters/row + a peek of the 8th). -->
+    <RowList id="rows"
+      translation="[224,318]"
+      itemSize="[1696,392]"
+      rowItemSize="[[224,336]]"
+      rowHeights="[392]"
+      itemComponentName="MovieGridItem"
+      numRows="2"
+      drawFocusFeedback="true"
+      rowFocusAnimationStyle="floatingFocus"
+      itemSpacing="[16,40]"
+      rowLabelFont="font:MediumBoldSystemFont"
+      rowLabelColor="0xFFFFFFFF"
+      showRowLabel="true" />
+
+<!-- LEFT RAIL: full section menu in premium order — Search, Home, Movies,
+     Series, My List, Live TV, genre rows from the home feed, Profiles,
+     Settings. Compact 44px rows; bg height set at runtime to fit the
+     item count. LEFT at rows col 0 enters; RIGHT/BACK exits. -->
+    <Group id="railGroup" translation="[0,324]">
+      <Rectangle id="railBg" color="0x0B0E17CC" translation="[8,0]" width="208" height="448" />
+      <LabelList id="railList"
+        translation="[8,4]"
+        itemSize="[192,44]"
+        numRows="10"
+        focusBitmapUri="pkg:/images/btn_focus.png"
+        focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+        color="0x9CA3AFFF"
+        focusedColor="0xFFFFFFFF" />
+    </Group>
+
+    <Rectangle id="statusBar" color="0x0B0E17FF" translation="[0,1016]" width="1920" height="48" />
+    <Label id="statusLabel" font="font:MediumBoldSystemFont" color="0xE5E7EBFF"
+      translation="[64,1020]" width="1800" height="40" wrap="true" maxLines="1" />
+
+    <!-- Fullscreen player: created at runtime (FsVideo component) and
+         attached to the scene root at fullscreen enter — see LiveTvScene. -->
+  </children>
+
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Config.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Persist.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Profiles.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Fembox.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Scrape.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Sse.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Trailer.brs" />
+  <script type="text/brightscript" uri="pkg:/components/UrbanAnime.brs" />
+  <!-- Pure data (no roUrlTransfer): the verified Urban episode catalog the
+       homescreen row renders. Shared with UrbanTask, which resolves the
+       ids from it. -->
+  <script type="text/brightscript" uri="pkg:/components/UrbanCatalog.brs" />
+  <script type="text/brightscript" uri="pkg:/components/HomeScene.brs" />
+</component>

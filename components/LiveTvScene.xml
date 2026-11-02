@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="LiveTvScene" extends="Group">
+  <interface>
+    <field id="done" type="bool" value="false" />
+    <field id="tmdbKey" type="string" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" width="1920" height="1080" />
+    <Rectangle id="topBar" color="0x0B0E17FF" translation="[0,0]" width="1920" height="150" />
+    <Rectangle id="topBarGlow" color="0xD4202830" translation="[0,0]" width="1920" height="150" />
+    <Rectangle id="topAccent" color="0xD42028FF" translation="[0,145]" width="1920" height="5" />
+
+    <Label id="headerTitle" text="LIVE TV" color="0xFFFFFFFF"
+      font="font:LargeBoldSystemFont" translation="[64,34]" width="260" height="70"
+      vertAlign="center" />
+    <Rectangle id="liveBadgeGlow" color="0xD4202844" translation="[326,39]" width="152" height="60" />
+    <Rectangle id="liveBadge" color="0xD42028FF" translation="[332,45]" width="140" height="48" />
+    <Rectangle id="liveBadgeEdge" color="0xFFFFFFFF" translation="[332,45]" width="140" height="4" />
+    <Label id="liveBadgeLabel" text="LIVE" color="0xFFFFFFFF"
+      font="font:MediumBoldSystemFont" translation="[332,45]" width="140" height="48"
+      horizAlign="center" vertAlign="center" />
+    <Label id="clockLabel" font="font:MediumSystemFont" color="0xE5E7EBFF"
+      translation="[1600,52]" width="272" height="34" horizAlign="right" vertAlign="center" />
+
+    <Group id="browseGroup">
+      <Rectangle id="chanPanel" color="0x0B0E17CC" translation="[36,158]" width="438" height="856" />
+      <Rectangle id="chanPanelEdge" color="0xD42028FF" translation="[36,158]" width="6" height="856" />
+      <Label id="chanHeader" text="GENRES" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+        translation="[48,166]" width="420" height="40" />
+      <Rectangle id="chanAccent" color="0xD42028FF" translation="[48,208]" width="140" height="5" />
+      <LabelList id="genreList"
+        translation="[48,224]"
+        itemSize="[420,56]"
+        numRows="12"
+        focusBitmapUri="pkg:/images/btn_focus.png"
+        focusFootprintBitmapUri="pkg:/images/btn_footprint.png"
+        color="0xE5E7EBFF"
+        focusedColor="0xFFFFFFFF" />
+
+      <Rectangle id="guidePanel" color="0x0B0E17CC" translation="[478,158]" width="724" height="856" />
+      <Rectangle id="guidePanelEdge" color="0xD42028FF" translation="[478,158]" width="6" height="856" />
+      <Label id="guideHeader" text="ALL CHANNELS" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+        translation="[490,166]" width="700" height="40" />
+      <Rectangle id="guideAccent" color="0xD42028FF" translation="[490,208]" width="140" height="5" />
+      <!-- Custom three-line rows (channel / NOW / NEXT). LabelList can only
+           draw one string per row, which is why the old guide could never
+           say what was on next. MarkupList hands each ContentNode to
+           LiveTvChannelRow, which draws the focus bar, CH badge and both
+           programme lines itself. -->
+      <MarkupList id="channelList"
+        translation="[490,224]"
+        itemSize="[700,86]"
+        itemComponentName="LiveTvChannelRow"
+        numRows="9"
+        vertFocusAnimationStyle="fixedFocus"
+        color="0xE5E7EBFF"
+        focusedColor="0xFFFFFFFF" />
+
+      <Rectangle id="previewFrame" color="0xD42028FF" translation="[1206,166]" width="670" height="380" />
+      <Rectangle id="infoCard" color="0x0B0E17F5" translation="[1206,556]" width="670" height="450" />
+      <Rectangle id="infoCardAccent" color="0xD42028FF" translation="[1206,552]" width="670" height="4" />
+      <!-- Info card (redesign): channel name, then a labelled NOW block with
+           its own time range and progress bar, then a labelled NEXT block.
+           "Next" used to be a single cramped line sharing the NOW row, which
+           is why the up-next detail read as broken: it had room for a title
+           and nothing else. -->
+      <Group id="infoGroup">
+        <Label id="infoName" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+          translation="[1218,566]" width="646" height="44" maxLines="1" vertAlign="center" />
+        <Rectangle id="infoRule" color="0xFFFFFF1F" translation="[1218,614]" width="646" height="2" />
+
+        <Label id="infoNowMeta" text="NOW" font="font:SmallBoldSystemFont" color="0xFF6B6BFF"
+          translation="[1218,624]" width="646" height="26" maxLines="1" vertAlign="center" />
+        <Label id="infoNow" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+          translation="[1218,650]" width="646" height="64" maxLines="2" wrap="true" vertAlign="top" />
+        <Rectangle id="infoTrack" color="0xFFFFFF1F" translation="[1218,720]" width="646" height="3" />
+        <Rectangle id="infoFill" color="0xD42028FF" translation="[1218,720]" width="0" height="3" />
+
+        <Label id="infoNextMeta" text="NEXT" font="font:SmallBoldSystemFont" color="0x9CA3AFFF"
+          translation="[1218,734]" width="646" height="26" maxLines="1" vertAlign="center" />
+        <Label id="infoNext" font="font:MediumSystemFont" color="0xD1D5DBFF"
+          translation="[1218,760]" width="646" height="56" maxLines="2" wrap="true" vertAlign="top" />
+
+        <Label id="infoDesc" font="font:SmallSystemFont" color="0x9CA3AFFF"
+          translation="[1218,822]" width="646" height="122" wrap="true" maxLines="4" vertAlign="top" />
+        <Label id="tuneHint" text="OK  WATCH     UP/DOWN  SURF     INFO  GUIDE"
+          font="font:SmallSystemFont" color="0x6B7280FF"
+          translation="[1218,954]" width="646" height="26" vertAlign="center" />
+      </Group>
+    </Group>
+
+    <Video id="previewVideo" translation="[1210,170]" width="662" height="372"
+      enableTrickPlay="false" enableUI="false" />
+
+    <Rectangle id="fsDim" color="0x05070DFF" translation="[0,0]" width="1920" height="1080"
+      visible="false" />
+
+    <!-- Fullscreen player (v7): XML-DECLARED Video inside this component —
+         the only video pattern proven on this firmware (splash, preview).
+         Runtime-created Video nodes play audio but show black. Toggled
+         visible on enter/exit; same enable flags as the preview. -->
+    <Video id="fsVideo" translation="[0,0]" width="1920" height="1080"
+      enableTrickPlay="false" enableUI="false" visible="false" />
+
+    <Rectangle id="errorBg" color="0x05070DF5" translation="[1210,259]" width="662" height="200" visible="false" />
+    <Rectangle id="errorAccent" color="0xD42028FF" translation="[1210,253]" width="662" height="6" visible="false" />
+    <Label id="errorLabel" visible="false" color="0xFFFFFFFF"
+      font="font:MediumBoldSystemFont" translation="[1222,291]" width="638" height="120"
+      horizAlign="center" vertAlign="center" wrap="true" maxLines="3" />
+
+    <Rectangle id="statusBar" color="0x0B0E17FF" translation="[0,1016]" width="1920" height="64" />
+    <Rectangle id="statusTick" color="0xD42028FF" translation="[48,1022]" width="6" height="48" />
+    <Label id="statusLabel" text="Loading live channels..."
+      font="font:MediumSystemFont" color="0xE5E7EBFF"
+      translation="[64,1022]" width="1800" height="48" wrap="true" maxLines="1" />
+
+    <!-- FEATURE 1: cable-style fullscreen info banner (stock nodes only).
+         Declared AFTER every other visual so it composites topmost over the
+         fs video plane siblings. Shown on fullscreen enter + every zap,
+         auto-hides via bannerTimer (~6s). BACK/OK exit semantics untouched. -->
+    <Group id="fsBanner" visible="false">
+      <Rectangle id="fsBannerBg" color="0x0B0E17E6" translation="[100,736]" width="1720" height="260" />
+      <Rectangle id="fsBannerAccent" color="0xD42028FF" translation="[100,732]" width="1720" height="4" />
+      <Rectangle id="fsBannerEdge" color="0xD42028FF" translation="[100,736]" width="6" height="260" />
+      <Label id="fsBannerChan" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+        translation="[130,746]" width="1150" height="40" maxLines="1" vertAlign="center" />
+      <Label id="fsBannerClock" font="font:MediumSystemFont" color="0xE5E7EBFF"
+        translation="[1290,746]" width="500" height="40" horizAlign="right" vertAlign="center" />
+      <!-- Same two-block NOW/NEXT shape as the browse card: a small red meta
+           line (time range) above the title, then a NEXT meta line above its
+           title. Previously NOW and NEXT were single lines with the time
+           crammed into the title, and NEXT carried no time at all. -->
+      <Label id="fsBannerNowMeta" font="font:SmallBoldSystemFont" color="0xFF6B6BFF"
+        translation="[130,790]" width="1660" height="24" maxLines="1" vertAlign="center" />
+      <Label id="fsBannerNow" font="font:MediumBoldSystemFont" color="0xFFFFFFFF"
+        translation="[130,814]" width="1660" height="34" maxLines="1" vertAlign="center" />
+      <Label id="fsBannerNextMeta" font="font:SmallBoldSystemFont" color="0x9CA3AFFF"
+        translation="[130,852]" width="1660" height="22" maxLines="1" vertAlign="center" />
+      <Label id="fsBannerNext" font="font:MediumSystemFont" color="0xD1D5DBFF"
+        translation="[130,874]" width="1660" height="30" maxLines="1" vertAlign="center" />
+      <Label id="fsBannerDesc" font="font:SmallSystemFont" color="0x9CA3AFFF"
+        translation="[130,906]" width="1660" height="76" wrap="true" maxLines="2" vertAlign="top" />
+    </Group>
+
+    <Timer id="clockTimer" duration="30" repeat="true" />
+    <Timer id="bannerTimer" duration="6" repeat="false" />
+    <Timer id="tuneTimer" duration="20" repeat="false" />
+    <Timer id="loadTimer" duration="85" repeat="false" />
+    <Timer id="surfTimer" duration="0.4" repeat="false" />
+  </children>
+
+    <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+    <!-- Tmdb.brs and LiveTv.brs both call JsonParseSafe() when a lineup or
+         EPG payload is JSON. Without Json.brs in this component's include set
+         that name is unresolved, and Roku raises it as a RUNTIME error the
+         first time the line runs. Keep this next to the scripts that need it. -->
+    <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+    <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/LiveTv.brs" />
+  <script type="text/brightscript" uri="pkg:/components/LiveTvGrid.brs" />
+  <script type="text/brightscript" uri="pkg:/components/LiveTvScene.brs" />
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="FemboxTask" extends="Task">
+  <interface>
+    <field id="tmdbId" type="string" />
+    <field id="token" type="string" />
+    <field id="mediaType" type="string" value="movie" />
+    <field id="season" type="string" />
+    <field id="episode" type="string" />
+    <field id="candidates" type="array" />
+    <field id="status" type="integer" value="0" alwaysNotify="true" />
+    <field id="errorDetail" type="string" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Fembox.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Scrape.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Sse.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tasks/FemboxTask.brs" />
+</component>
+
+
+

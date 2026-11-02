@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Keypad" extends="Group">
+  <interface>
+    <field id="title" type="string" />
+    <field id="message" type="string" />
+    <field id="text" type="string" />
+    <field id="charset" type="string" />
+    <field id="searchMode" type="bool" />
+    <field id="tmdbKey" type="string" />
+    <field id="picked" type="assocarray" />
+    <field id="wasAccepted" type="bool" />
+    <field id="wasPicked" type="bool" />
+    <field id="wasCancelled" type="bool" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x05070DFF" width="1920" height="1080" translation="[0,0]" />
+    <Rectangle id="topRule" color="0xD42028FF" width="1920" height="5" translation="[0,0]" />
+    <Rectangle id="headerBar" color="0x0B0E17FF" width="1920" height="200" translation="[0,0]" />
+    <Rectangle id="headerAccent" color="0xD4202830" width="1920" height="200" translation="[0,0]" />
+    <Rectangle id="headerSideBar" color="0xD42028FF" width="8" height="120" translation="[48,44]" />
+    <Label id="titleLabel" color="0xFFFFFFFF" width="1000" height="50"
+      translation="[72,40]" font="font:MediumBoldSystemFont" />
+    <Label id="msgLabel" color="0xE5E7EBFF" width="1000" height="120"
+      translation="[72,100]" font="font:SmallSystemFont" wrap="true" maxLines="5" />
+    <Rectangle id="echoGlow" color="0xD4202844" width="1000" height="84" translation="[60,248]" />
+    <Rectangle id="echoBorder" color="0xD42028FF" width="992" height="76" translation="[64,252]" />
+    <Rectangle id="echoEdge" color="0xFFFFFFFF" width="992" height="4" translation="[64,252]" />
+    <Rectangle id="echoBox" color="0x0B0E17FF" width="988" height="72" translation="[66,254]" />
+    <Label id="echoLabel" color="0xFFFFFFFF" width="972" height="66"
+      translation="[80,260]" font="font:MediumSystemFont" vertAlign="center" />
+    <MarkupGrid id="keysGrid"
+      translation="[64,348]"
+      itemComponentName="KeyGridItem"
+      itemSize="[106,96]"
+      itemSpacing="[8,8]"
+      numColumns="8"
+      numRows="5"
+      drawFocusFeedback="false" />
+    <Rectangle id="resultsPanel" color="0x0B0E17FF" width="1800" height="956"
+      translation="[60,60]" visible="false" />
+    <Rectangle id="resultsAccent" color="0xD42028FF" width="1800" height="6"
+      translation="[60,54]" visible="false" />
+    <Rectangle id="resultsEdge" color="0xD42028FF" width="8" height="956"
+      translation="[60,60]" visible="false" />
+    <Label id="resultsLabel" color="0xFFFFFFFF" width="1752" height="40"
+      translation="[84,84]" font="font:MediumBoldSystemFont" text="RESULTS"
+      visible="false" />
+    <Label id="resultsEmptyLabel" color="0xE5E7EBFF" width="1500" height="120"
+      translation="[210,440]" font="font:MediumSystemFont" horizAlign="center"
+      text="No matches yet - keep typing, or press LEFT to edit" visible="false" wrap="true" maxLines="3" />
+    <MarkupGrid id="resultsGrid"
+      translation="[84,144]"
+      itemComponentName="MovieGridItem"
+      itemSize="[282,360]"
+      itemSpacing="[12,12]"
+      numColumns="6"
+      numRows="2"
+      drawFocusFeedback="false"
+      visible="false" />
+    <Timer id="searchTimer" repeat="false" duration="0.7" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Keypad.brs" />
+</component>

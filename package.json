@@ -1,0 +1,17 @@
+{
+  "name": "roku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aether_bundle.js",
+  "scripts": {
+    "test": "node tools/run-brs-tests.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "brighterscript": "^0.73.5",
+    "brs-node": "^2.6.0"
+  }
+}

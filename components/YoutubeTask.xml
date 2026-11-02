@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- YoutubeTask: resolves ONE title's trailer to a YouTube id and, when
+     launch is true, opens it in the Roku YouTube app via ECP. Task-thread
+     only: roURLTransfer cannot be created on a render thread. -->
+<component name="YoutubeTask" extends="Task">
+  <interface>
+    <field id="tmdbId" type="string" />
+    <field id="mediaType" type="string" value="movie" />
+    <field id="title" type="string" />
+    <field id="tmdbKey" type="string" />
+    <!-- Optional: a YouTube key the caller already holds (skips TMDB). -->
+    <field id="trailerKey" type="string" />
+    <!-- true = also deep-link into the YouTube channel once resolved. -->
+    <field id="launch" type="boolean" value="false" />
+    <field id="videoId" type="string" />
+    <field id="errorDetail" type="string" />
+    <field id="status" type="integer" value="0" alwaysNotify="true" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tasks/YoutubeTask.brs" />
+</component>

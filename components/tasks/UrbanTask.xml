@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="UrbanTask" extends="Task">
+  <interface>
+    <field id="tmdbId" type="string" />
+    <field id="title" type="string" />
+    <field id="mediaType" type="string" />
+    <field id="season" type="string" />
+    <field id="episode" type="string" />
+    <!-- Provider-specific embed ids. Not interchangeable: OK.ru, Vidmoly,
+         Voe and Playmogo each mint their own id for the same episode, so a
+         single episodeId field silently 404s on every provider but the one
+         it came from. Empty when the caller has no catalog entry. -->
+    <field id="okId" type="string" />
+    <field id="vidmolyId" type="string" />
+    <field id="voeId" type="string" />
+    <field id="playmogoId" type="string" />
+    <field id="candidates" type="array" />
+    <field id="status" type="integer" value="0" alwaysNotify="true" />
+    <field id="errorDetail" type="string" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <!-- Constants.brs is REQUIRED alongside Tmdb.brs, not optional: the Tmdb*
+       helpers in Tmdb.brs call AppConstants(), and a Task only sees the
+       scripts its own component includes. This was the one component
+       including Tmdb.brs without it, so the first call into any TmdbSearchUrl
+       / Tmdb*Url helper here would have died on an undefined function. -->
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/UrbanStreams.brs" />
+  <script type="text/brightscript" uri="pkg:/components/UrbanCatalog.brs" />
+  <script type="text/brightscript" uri="pkg:/components/UrbanVideoEmbed.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tasks/UrbanTask.brs" />
+</component>

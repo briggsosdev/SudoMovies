@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SplashScene" extends="Scene">
+    <interface>
+        <field id="launchArgs" type="assocarray" />
+        <field id="splashDone" type="bool" value="false" />
+    </interface>
+    <children>
+        <Video
+            id="splashVideo"
+            width="1920"
+            height="1080"
+            translation="[0,0]"
+            contentIsPlaylist="false"
+            enableUI="false"
+            loop="false" />
+        <Timer id="splashTimer" repeat="false" duration="5.0" />
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/SplashScene.brs" />
+</component>

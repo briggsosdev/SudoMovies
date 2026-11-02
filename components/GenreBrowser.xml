@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- GenreBrowser: genre chips + paged poster grid + PREV/NEXT page buttons.
+     ONE node owns focus (this component) and handles every key itself, so
+     there is no list-edge / focus-hand-off behaviour to get wrong. The chips,
+     poster cells and page buttons are plain Rectangle/Poster/Label nodes
+     created in GenreBrowser.brs. -->
+<component name="GenreBrowser" extends="Group">
+  <interface>
+    <field id="genreId" type="string" />
+    <field id="genreTitle" type="string" />
+    <field id="tmdbKey" type="string" />
+    <field id="start" type="bool" value="false" />
+    <field id="picked" type="assocarray" />
+    <field id="done" type="bool" value="false" />
+  </interface>
+  <children>
+    <Rectangle id="bg" color="0x0A0E17FF" width="1920" height="1080" translation="[0,0]" />
+    <Rectangle id="topRule" color="0xD42028FF" width="1920" height="4" translation="[0,0]" />
+    <Label id="heading" color="0xFFFFFFFF" width="900" height="56"
+      translation="[60,24]" font="font:LargeBoldSystemFont" vertAlign="center" />
+    <Label id="statusLabel" color="0x8B95A8FF" width="1500" height="28"
+      translation="[60,82]" font="font:SmallSystemFont" vertAlign="center" />
+
+    <!-- Genre chip strip (9 visible, scrolls with focus) -->
+    <Label id="arrowL" text="&lt;" color="0x8B95A8FF" width="32" height="44"
+      translation="[22,124]" font="font:MediumBoldSystemFont" horizAlign="center" vertAlign="center" visible="false" />
+    <Group id="chipLayer" translation="[60,124]" />
+    <Label id="arrowR" text="&gt;" color="0x8B95A8FF" width="32" height="44"
+      translation="[1774,124]" font="font:MediumBoldSystemFont" horizAlign="center" vertAlign="center" visible="false" />
+
+    <!-- Poster grid: 10 columns x 2 rows (TMDB serves 20 per page) -->
+    <Group id="gridLayer" translation="[60,196]" />
+
+    <!-- PREV / PAGE x of y / NEXT -->
+    <Group id="pagerLayer" translation="[60,856]" />
+
+    <Label id="hintLabel" color="0x6B7280FF" width="1800" height="28"
+      translation="[60,924]" font="font:SmallSystemFont" vertAlign="center"
+      text="LEFT / RIGHT  genre     UP / DOWN  genres, posters, page bar     OK  select     REW / FF  page     BACK  return" />
+
+    <!-- Debounce: scrolling across chips loads the genre you stop on, so
+         holding LEFT/RIGHT does not fire one TMDB request per key repeat.
+         No focus-guard timer: re-asserting focus on a timer caused the
+         frozen-screen reports (and is unnecessary once the group is
+         focusable, which GenreBrowser.brs now sets in init). -->
+    <Timer id="tabTimer" repeat="false" duration="0.3" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/Constants.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Json.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Tmdb.brs" />
+  <script type="text/brightscript" uri="pkg:/components/GenreBrowser.brs" />
+</component>
