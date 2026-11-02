@@ -16,6 +16,42 @@ A Roku channel (SudoMovies) for sideloading onto a Roku developer device.
 - **TMDB** – a read‑only API key (also free) is used for movie metadata and search.  
 - The channel is packaged for sideloading onto a Roku developer device; no proprietary or paid services are required.
 
+## 🔑 Obtaining API keys & cookie id
+
+- **TMDB read‑only API key**  
+  1. Go to <https://www.themoviedb.org/settings/api> and sign up for a free account.  
+  2. Click **Create API key** and give your application a name (e.g., “SudoMovies”).  
+  3. Choose **Read‑only** scope – this key only grants browsing and search, no write access.  
+  4. Copy the generated **API key** (a long string starting with `eyJ...`).  
+  5. Paste it into the **TMDB Key** field in the injector GUI (or run the one‑liner `replace_tmdb_key` from the CLI).
+
+- **Febbox token**  
+  1. Register at <https://febbox.com> with a fresh Google account.  
+  2. Verify your email address.  
+  3. After logging in, open the injector tool and click **Replace Febbox Key in Config.brs** – the tool reads the token stored in your browser’s local storage.  
+  4. *Important*: the free tier provides **10 GB of data per month** – select videos whose total size stays under this limit to avoid interruptions.
+
+- **Cookie id (resolver‑specific)**  
+  Some resolvers (e.g., VixSrc) require a persistent cookie ID to maintain a session.  
+  1. Open the resolver’s web page in a desktop browser.  
+  2. Play a video and keep the tab open; the resolver will set a cookie (e.g., `__cf_bm`, `session_id`, etc.).  
+  3. Open the browser’s Developer Tools → Application → Cookies, note the cookie name/value.  
+  4. This cookie value can be entered manually in the resolver’s configuration within the SudoMovies app (if supported).  
+  5. *Note*: The free Febbox tier already limits you to 10 GB/month; make sure the combined size of the streams you watch does not exceed that quota.
+
+---
+
+## ✨ Features (tagged)
+
+| Tag | What it does |
+|-----|--------------|
+| **🔑 [Metadata]** | TMDB read‑only API key for browsing, search, and genre lists. |
+| **📡 [Resolvers]** | VixSrc + Febbox fallback (CineSrc PoW‑gated, StreamWish/DailyMotion/Archive removed). |
+| **📺 [Live TV]** | Premium channels removed from rail; guide recomputed from programme list at wall‑clock; `1790000000` anchor, 2‑h slots. |
+| **▶️ [Playback]** | `m.lastResolver` remembered per profile; auto‑play next episode reuses last resolver (`"vix"`/`"feb"`). |
+| **👤 [Profiles]** | Per‑profile avatar selection; startup picker adds profile “A”. |
+| **🛠️ [Injector/Deployer]** | GUI tool (`roku_inject_deploy.py` / `RokuDeploy.exe`) replaces Febbox/TMDB keys, builds zip, deploys via digest auth. |
+
 ---
 
 ## ✨ Features (tagged)
