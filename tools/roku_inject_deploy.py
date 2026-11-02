@@ -38,6 +38,19 @@ def read_febbox_token():
         return ""
 
 
+def read_tmdb_key():
+    try:
+        with open(CONFIG_BRs, "r", encoding="utf-8") as f:
+            txt = f.read()
+        m = re.search(r'tmdbKey:\s*"([^"]*)"', txt)
+        if m:
+            return m.group(1)
+        m = re.search(r'tmdbDefaultKey:\s*"([^"]*)"', txt)
+        return m.group(1) if m else ""
+    except Exception:
+        return ""
+
+
 def replace_febbox_token(new_token):
     new_token = (new_token or "").strip()
     if not new_token:
@@ -92,6 +105,36 @@ def replace_febbox_token(new_token):
         f.write(new_txt)
     os.replace(tmp, CONFIG_BRs)
     return n_active + n_list
+
+
+def replace_tmdb_key(new_key):
+    new_key = (new_key or "").strip()
+    if not new_key:
+        raise ValueError("TMDB key must not be empty")
+    with open(CONFIG_BRs, "r", encoding="utf-8") as f:
+        txt = f.read()
+
+    new_txt, n = re.subn(
+        r'tmdbKey:\s*"[^"]*"',
+        lambda _m: 'tmdbKey: "' + new_key + '"',
+        txt,
+        count=1,
+    )
+    if n == 0:
+        new_txt, n = re.subn(
+            r'tmdbDefaultKey:\s*"[^"]*"',
+            lambda _m: 'tmdbDefaultKey: "' + new_key + '"',
+            new_txt,
+            count=1,
+        )
+    if n == 0:
+        raise RuntimeError("tmdbKey field not found in Config.brs")
+
+    tmp = CONFIG_BRs + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(new_txt)
+    os.replace(tmp, CONFIG_BRs)
+    return n
 
 
 def discover_roku(progress_cb=None):
@@ -297,6 +340,14 @@ class App(tk.Tk):
 
         ttk.Button(self, text="Replace Febbox Key in Config.brs", command=self.on_replace).pack(pady=6)
 
+        # TMDB key
+        ttk.Label(self, text="TMDB Key:").pack(anchor="w", padx=10, pady=(10, 2))
+        self.tmdb_text = scrolledtext.ScrolledText(self, height=3, wrap=tk.WORD)
+        self.tmdb_text.pack(fill="x", padx=10)
+        self.tmdb_text.insert("1.0", read_tmdb_key())
+
+        ttk.Button(self, text="Replace TMDB Key in Config.brs", command=self.on_replace_tmdb).pack(pady=6)
+
         # Roku discovery
         ttk.Label(self, text="Roku Device:").pack(anchor="w", padx=10, pady=(10, 2))
         row = ttk.Frame(self)
@@ -351,6 +402,16 @@ class App(tk.Tk):
             n = replace_febbox_token(token)
             self.log(f"Replaced Febbox token in {n} location(s).")
             messagebox.showinfo("Success", "Febbox token replaced in Config.brs")
+        except Exception as e:
+            self.log(f"ERROR: {e}")
+            messagebox.showerror("Error", str(e))
+
+    def on_replace_tmdb(self):
+        key = self.tmdb_text.get("1.0", tk.END).strip()
+        try:
+            n = replace_tmdb_key(key)
+            self.log(f"Replaced TMDB key in {n} location(s).")
+            messagebox.showinfo("Success", "TMDB key replaced in Config.brs")
         except Exception as e:
             self.log(f"ERROR: {e}")
             messagebox.showerror("Error", str(e))
