@@ -90,10 +90,10 @@ A Roku channel (SudoMovies) for sideloading onto a Roku developer device.
 
 ```powershell
 # Set the device host (once)
-$env:ROKU_HOST = "10.0.0.74"
+$env:ROKU_HOST = "<Roku-IP>"
 
 # Then each session:
-powershell -ExecutionPolicy Bypass -File tools\deploy.ps1 -RokuHost 10.0.0.74
+powershell -ExecutionPolicy Bypass -File tools\deploy.ps1 -RokuHost <Roku-IP>
 ```
 
 - Deletes existing dev channel, installs `out/roku.zip`, launches `/launch/dev`, verifies the dev channel is active.
