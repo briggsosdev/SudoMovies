@@ -13,7 +13,7 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 **SudoMovies** lets you browse and play movies and TV shows on your Roku using free, open-source resolvers.
 
 - **Febbox** – free video streams. Free tier = **100 GB high-speed traffic per month** (then speed drops to 100 KB/s). Storage for free accounts is 10 GB.
-- **TMDB** – free movie/TV metadata (titles, posters, search). Optional but recommended.
+- **TMDB** – free movie/TV metadata (titles, posters, search). Required for the channel to show data.
 - **No paid services required.** Everything is free and open-source (MIT license).
 
 ---
@@ -37,14 +37,14 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 The easiest way is to use the included **injector tool**. It takes the keys you paste in, writes them into the channel, builds it, and deploys it to your Roku — all in one window.
 
 1. **Get a Febbox token** (manual – see below).
-2. **Get a TMDB key** (optional) – sign up free at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) → create a **Read-Only** API key.
+2. **Get a TMDB key** (required for data) – sign up free at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) → create a **Read-Only** API key.
 3. **Put your Roku in Developer Mode** – on the Roku remote: Home ×3, Up ×2, Right, Left, Right, Left, Right.
 4. **Run the injector tool:**
    - Windows: double-click `RokuDeploy.exe`
    - Or run: `python tools/roku_inject_deploy.py`
 5. In the tool:
    - Paste your **Febbox token** → click **Replace Febbox Key**.
-   - Paste your **TMDB key** (optional) → click **Replace TMDB Key**.
+   - Paste your **TMDB key** (required for data) → click **Replace TMDB Key**.
    - Click **Auto-Find Roku** (or type your Roku's IP).
    - Click **Build + Deploy**.
 6. Done! The channel appears on your Roku as a dev channel.
@@ -71,7 +71,7 @@ TMDB (The Movie Database) provides movie titles, posters, and search. A **read-o
 
 - **Free** to get at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
 - **Read-only** means it can only look up info – it can't change anything.
-- **Optional.** Without it, browsing still works but with less metadata.
+- **Required for data.** Without it, the channel has no titles, posters, or search.
 - **How to add it:** Paste it into the **TMDB Key** field in the injector tool → click **Replace TMDB Key in Config.brs**.
 
 ### VixSrc – does it need a key?
@@ -88,7 +88,7 @@ TMDB (The Movie Database) provides movie titles, posters, and search. A **read-o
    # or double-click RokuDeploy.exe
    ```
 2. **Febbox token** – paste the `ui` cookie value you copied from your browser. Click **Replace Febbox Key**.
-3. **TMDB key** (optional) – paste it → click **Replace TMDB Key**.
+3. **TMDB key** (required for data) – paste it → click **Replace TMDB Key**.
 4. Click **Auto-Find Roku** or type your Roku's IP. Set credentials (`rokudev` / `1234`).
 5. Click **Build + Deploy**.
 
