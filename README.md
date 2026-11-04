@@ -18,6 +18,20 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 
 ---
 
+## ✨ Features
+
+- **Search & browse** – find movies/TV via TMDB, browse by genre.
+- **Continue watching** – resumes where you left off, per profile.
+- **My Watchlist** – add/remove titles, saved per profile.
+- **Trailers** – watch YouTube trailers from the details page.
+- **Live TV** – free FAST channels with a TV guide.
+- **Subtitles** – sideloaded tracks (srt/ttml/dfxp) appear in the Roku closed-caption picker (press `*` during playback).
+- **Profiles** – multiple profiles with avatars, resume points, and watchlists.
+- **Resolvers** – Febbox (free, 100 GB/month) + VixSrc (no key needed). Auto-fallback between them.
+- **Auto-play next episode** – remembers your last resolver and continues.
+- **One-click deploy** – injector tool builds & deploys to your Roku.
+- **Free & open-source** – MIT license, no paid services.
+
 ## ⚡ Quick Start (recommended)
 
 The easiest way is to use the included **injector tool**. It takes the keys you paste in, writes them into the channel, builds it, and deploys it to your Roku — all in one window.
