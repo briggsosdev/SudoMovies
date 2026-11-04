@@ -20,7 +20,12 @@ from tkinter import ttk, messagebox, scrolledtext
 import requests
 from requests.auth import HTTPDigestAuth
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import sys
+
+if getattr(sys, "frozen", False):
+    ROOT = os.path.dirname(sys.executable)
+else:
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_BRs = os.path.join(ROOT, "components", "Config.brs")
 OUT_ZIP = os.path.join(ROOT, "out", "roku.zip")
 
