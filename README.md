@@ -12,7 +12,7 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 
 **SudoMovies** lets you browse and play movies and TV shows on your Roku using free, open-source resolvers.
 
-- **Febbox** – free video streams. Free tier = **10 GB per month**. Pick videos whose total size stays under 10 GB.
+- **Febbox** – free video streams. Free tier = **100 GB high-speed traffic per month** (then speed drops to 100 KB/s). Storage for free accounts is 10 GB.
 - **TMDB** – free movie/TV metadata (titles, posters, search). Optional but recommended.
 - **No paid services required.** Everything is free and open-source (MIT license).
 
@@ -45,7 +45,7 @@ The easiest way is to use the included **injector tool**. It takes the keys you 
 
 Febbox is a free streaming service. To use it in SudoMovies you need a **token** (a long string that proves you have an account). The token is the value of a browser cookie named **`ui`**.
 
-- **Free tier = 10 GB per month.** That's enough for a few movies. Pick videos under 10 GB total.
+- **Free tier = 100 GB high-speed traffic per month.** That's plenty for streaming. After 100 GB, speed drops to 100 KB/s until next month.
 - **Where do I get it?** Sign up at [febbox.com](https://febbox.com) with a fresh Google account. After logging in, the `ui` cookie is stored in your browser.
 - **How do I copy it?** Open DevTools (`F12`) → Application/Storage → Cookies → `febbox.com` → find the cookie named `ui` → copy its Value (starts with `eyJ...`).
 - **How do I put it in SudoMovies?** Paste it into the **Febbox Token** box in the injector tool, then click **Replace Febbox Key**. The tool writes it into the channel for you.
@@ -113,7 +113,7 @@ Or from the GUI: click **Build Package**.
 - Reinstalling replaces the existing dev channel (Delete then Install).
 - Personal data from the original dev build has been removed; this copy is safe to share.
 - The executable `RokuDeploy.exe` is a standalone PyInstaller build (no Python needed).
-- **Febbox free tier:** 10 GB monthly allowance – choose videos accordingly.
+- **Febbox free tier:** 100 GB high-speed traffic per month (then 100 KB/s). Free storage is 10 GB.
 - **Febbox token:** it's the value of the `ui` cookie on febbox.com (copy it from DevTools). Do not log out after copying.
 
 ---
@@ -173,4 +173,4 @@ SudoMovies/
 
 ---
 
-*Happy streaming, and remember: keep each video under 10 GB to stay within the free Febbox allowance!*
+*Happy streaming, and remember: free Febbox accounts get 100 GB of high-speed traffic per month (then 100 KB/s).*
