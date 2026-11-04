@@ -20,9 +20,9 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 
 ## ⚡ Quick Start (recommended)
 
-The easiest way is to use the included **injector tool**. It handles Febbox tokens, TMDB keys, building, and deploying all in one window.
+The easiest way is to use the included **injector tool**. It takes the keys you paste in, writes them into the channel, builds it, and deploys it to your Roku — all in one window.
 
-1. **Get a Febbox token** – sign up free at [febbox.com](https://febbox.com) (use a fresh Google account). Log in so your browser stores the token.
+1. **Get a Febbox token** (manual – see below).
 2. **Get a TMDB key** (optional) – sign up free at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) → create a **Read-Only** API key.
 3. **Put your Roku in Developer Mode** – on the Roku remote: Home ×3, Up ×2, Right, Left, Right, Left, Right.
 4. **Run the injector tool:**
@@ -35,7 +35,7 @@ The easiest way is to use the included **injector tool**. It handles Febbox toke
    - Click **Build + Deploy**.
 6. Done! The channel appears on your Roku as a dev channel.
 
-> 💡 **Tip:** The injector tool grabs your Febbox token automatically from your browser. You don't need to copy anything manually or mess with cookies.
+> 💡 **Tip:** The injector tool does **not** grab anything automatically. You copy the Febbox token from your browser's DevTools (steps below) and paste it in. The tool then writes it into the channel for you.
 
 ---
 
@@ -43,12 +43,13 @@ The easiest way is to use the included **injector tool**. It handles Febbox toke
 
 ### Febbox token – what is it?
 
-Febbox is a free streaming service. To use it in SudoMovies you need a **token** (think of it as a password that proves you have an account).
+Febbox is a free streaming service. To use it in SudoMovies you need a **token** (a long string that proves you have an account). The token is the value of a browser cookie named **`ui`**.
 
 - **Free tier = 10 GB per month.** That's enough for a few movies. Pick videos under 10 GB total.
-- **Where do I get it?** Sign up at [febbox.com](https://febbox.com). After logging in, the token is saved in your browser automatically.
-- **How do I put it in SudoMovies?** You don't need to copy it. Just run the injector tool and click **Replace Febbox Key** – it reads the token from your browser for you.
-- **Do I need to mess with cookies?** No. The injector tool handles everything. You never need to open browser DevTools or copy cookie values.
+- **Where do I get it?** Sign up at [febbox.com](https://febbox.com) with a fresh Google account. After logging in, the `ui` cookie is stored in your browser.
+- **How do I copy it?** Open DevTools (`F12`) → Application/Storage → Cookies → `febbox.com` → find the cookie named `ui` → copy its Value (starts with `eyJ...`).
+- **How do I put it in SudoMovies?** Paste it into the **Febbox Token** box in the injector tool, then click **Replace Febbox Key**. The tool writes it into the channel for you.
+- **Do I need to mess with cookies after that?** No. Once it's injected, SudoMovies uses it automatically. If streams stop working later, just repeat the steps to get a fresh token.
 
 ### TMDB key – what is it?
 
@@ -72,7 +73,7 @@ TMDB (The Movie Database) provides movie titles, posters, and search. A **read-o
    python tools/roku_inject_deploy.py
    # or double-click RokuDeploy.exe
    ```
-2. **Febbox token** – the tool reads it from your browser. Click **Replace Febbox Key**.
+2. **Febbox token** – paste the `ui` cookie value you copied from your browser. Click **Replace Febbox Key**.
 3. **TMDB key** (optional) – paste it → click **Replace TMDB Key**.
 4. Click **Auto-Find Roku** or type your Roku's IP. Set credentials (`rokudev` / `1234`).
 5. Click **Build + Deploy**.
@@ -113,6 +114,7 @@ Or from the GUI: click **Build Package**.
 - Personal data from the original dev build has been removed; this copy is safe to share.
 - The executable `RokuDeploy.exe` is a standalone PyInstaller build (no Python needed).
 - **Febbox free tier:** 10 GB monthly allowance – choose videos accordingly.
+- **Febbox token:** it's the value of the `ui` cookie on febbox.com (copy it from DevTools). Do not log out after copying.
 
 ---
 
