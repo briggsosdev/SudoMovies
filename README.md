@@ -32,6 +32,21 @@ A free, open-source Roku channel for sideloading onto a Roku developer device.
 - **One-click deploy** – injector tool builds & deploys to your Roku.
 - **Free & open-source** – MIT license, no paid services.
 
+## 📱 Supported Devices
+
+Works on any Roku device that supports **at least HD (720p)** and **MKV playback** (required for the splash video).
+
+| Device class | Examples | Supported? |
+|---|---|---|
+| **FHD (1080p)** | Roku Ultra, Roku 4, Roku 3, Roku Streaming Stick+, Roku Express 4K, Roku Premiere | ✅ Yes |
+| **HD‑only (720p)** | Roku Express, Roku Streaming Stick (older), Roku 2 | ✅ Yes |
+| **SD‑only** | Roku 1, Roku LT | ❌ No (Roku no longer supports SD‑only apps) |
+| **No MKV support** | Pre‑2011 models, some low‑end sticks | ❌ No (`requires_mkv=1`) |
+
+> 💡 To support **all** devices, convert `splashmov.mkv` → MP4 and remove `requires_mkv=1` from the manifest.
+
+---
+
 ## ⚡ Quick Start (recommended)
 
 The easiest way is to use the included **injector tool**. It takes the keys you paste in, writes them into the channel, builds it, and deploys it to your Roku — all in one window.
