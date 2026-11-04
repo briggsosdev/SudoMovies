@@ -3101,7 +3101,7 @@ sub ShowSettingsMenu()
     m.settingsMenuList = list
 
     menuHint = CreateObject("roSGNode", "Label")
-    menuHint.text = "Febbox token enables playback  •  Provider and TMDB key are optional"
+    menuHint.text = "Febbox token enables playback  •  TMDB key required for movie/TV data"
     menuHint.font = "font:MediumSystemFont"
     menuHint.color = "0x6B7280FF"
     menuHint.translation = "[560,640]"
