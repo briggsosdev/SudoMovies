@@ -10,6 +10,6 @@ splash_screen_fhd=pkg:/images/splash_fhd.png
 splash_screen_sd=pkg:/images/splash_fhd.png
 splash_color=#05070D
 splash_min_time=0
-ui_resolutions=fhd
+ui_resolutions=fhd,hd
 supports_input_launch=1
 requires_mkv=1
