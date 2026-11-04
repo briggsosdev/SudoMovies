@@ -47,6 +47,16 @@ Works on any Roku device that supports **at least HD (720p)** and **MKV playback
 
 ---
 
+## 📸 Screenshots
+
+![Injector tool](screenshots/injector.png)
+*The injector tool – paste your Febbox token & TMDB key, then build + deploy in one click.*
+
+![Roku UI](screenshots/roku-ui.jpg)
+*The channel running on a Roku – browse movies, view details, and search.*
+
+---
+
 ## ⚡ Quick Start (recommended)
 
 The easiest way is to use the included **injector tool**. It takes the keys you paste in, writes them into the channel, builds it, and deploys it to your Roku — all in one window.
