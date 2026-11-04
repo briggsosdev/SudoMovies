@@ -2295,7 +2295,7 @@ sub StartFembox()
         return
     end if
     if m.progressSmall <> invalid then
-        m.progressSmall.text = "Asking Febbox (uses your 10 GB quota)..."
+        m.progressSmall.text = "Asking Febbox (uses your 100 GB monthly quota)..."
     end if
     task = CreateObject("roSGNode", "FemboxTask")
     task.tmdbId = rec.tmdbId
