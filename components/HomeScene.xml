@@ -101,10 +101,5 @@
   <script type="text/brightscript" uri="pkg:/components/Scrape.brs" />
   <script type="text/brightscript" uri="pkg:/components/Sse.brs" />
   <script type="text/brightscript" uri="pkg:/components/Trailer.brs" />
-  <script type="text/brightscript" uri="pkg:/components/UrbanAnime.brs" />
-  <!-- Pure data (no roUrlTransfer): the verified Urban episode catalog the
-       homescreen row renders. Shared with UrbanTask, which resolves the
-       ids from it. -->
-  <script type="text/brightscript" uri="pkg:/components/UrbanCatalog.brs" />
   <script type="text/brightscript" uri="pkg:/components/HomeScene.brs" />
 </component>
