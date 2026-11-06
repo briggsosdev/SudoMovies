@@ -201,13 +201,40 @@ def discover_roku(progress_cb=None):
     return found
 
 
+def _node_command(script_args):
+    """Resolve a runnable node invocation.
+
+    On Windows, ``node`` is frequently installed as a ``.cmd``/``.bat`` shim
+    (nvm-windows, the official installer's PATH entry, ...). ``subprocess.run``
+    with a list and ``shell=False`` calls ``CreateProcess`` directly on that
+    shim, which fails with ``[WinError 193] %1 is not a valid Win32
+    application``. Detect that case and route through ``cmd.exe`` so the shim is
+    resolved normally. On other platforms (or when a real ``node`` binary is
+    found) the list form is used as before.
+    """
+    import shutil
+    import sys
+
+    node = shutil.which("node")
+    if node and node.lower().endswith((".cmd", ".bat")):
+        return ["cmd", "/c", "node"] + list(script_args), False
+    if node:
+        return [node] + list(script_args), False
+    # Fallback: let the shell resolve it.
+    if sys.platform == "win32":
+        return "node " + " ".join(script_args), True
+    return ["node"] + list(script_args), False
+
+
 def run_compile(log_cb):
     log_cb("Compiling (node tools/compile.js)...")
+    cmd, shell = _node_command(["tools/compile.js"])
     proc = subprocess.run(
-        ["node", "tools/compile.js"],
+        cmd,
         cwd=ROOT,
         capture_output=True,
         text=True,
+        shell=shell,
     )
     if proc.stdout:
         log_cb(proc.stdout.rstrip())
@@ -229,11 +256,13 @@ def build_package(log_cb):
             os.remove(OUT_ZIP)
     except OSError:
         pass
+    cmd, shell = _node_command(["tools/package.js"])
     proc = subprocess.run(
-        ["node", "tools/package.js"],
+        cmd,
         cwd=ROOT,
         capture_output=True,
         text=True,
+        shell=shell,
     )
     if proc.stdout:
         log_cb(proc.stdout.rstrip())
